@@ -29,14 +29,12 @@ export default defineConfig({
   ],
   webServer: {
     command: process.env.CI
-      ? `yarn serve demo/dist -l tcp://127.0.0.1:${DEMO_PORT} --no-clipboard --no-port-switching --no-request-logging`
-      : `yarn gulp build-demo && yarn serve demo/dist -l tcp://127.0.0.1:${DEMO_PORT} --no-clipboard --no-port-switching --no-request-logging`,
+      ? `npx serve demo/dist -p ${DEMO_PORT} --no-clipboard`
+      : `yarn gulp build-demo && npx serve demo/dist -p ${DEMO_PORT} --no-clipboard`,
     url: DEMO_BASE_URL,
     reuseExistingServer: !process.env.CI,
     timeout: process.env.CI ? 30_000 : 300_000,
-    cwd:
-      process.env.GITHUB_WORKSPACE ??
-      new URL("../..", import.meta.url).pathname,
+    cwd: new URL("../..", import.meta.url).pathname,
     stdout: "pipe",
     stderr: "pipe",
   },
