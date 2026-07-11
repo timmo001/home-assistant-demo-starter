@@ -1,0 +1,14 @@
+---
+extends: default
+
+ignore: |
+  .work/
+  node_modules/
+  vendor/
+  work/
+
+rules:
+  line-length:
+    ignore: |
+      .github/
+    level: warning

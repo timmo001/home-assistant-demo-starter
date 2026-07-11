@@ -1,0 +1,18 @@
+{
+  "name": "home-assistant-demo-starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.17.0",
+  "scripts": {
+    "prepare:demo": "node scripts/demo.mjs prepare",
+    "dev": "node scripts/demo.mjs dev",
+    "build": "node scripts/demo.mjs build",
+    "lint": "node scripts/demo.mjs lint",
+    "format": "node scripts/demo.mjs format",
+    "test": "node scripts/demo.mjs test",
+    "ci": "node scripts/demo.mjs ci",
+    "playwright:install": "node scripts/demo.mjs install-browsers",
+    "renovate:validate": "yarn dlx -p renovate renovate-config-validator --strict"
+  }
+}

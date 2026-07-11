@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    "group:recommended"
+  ],
+  "dependencyDashboard": true,
+  "enabledManagers": ["git-submodules", "github-actions"],
+  "git-submodules": {
+    "enabled": true
+  },
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "description": "Group GitHub Actions.",
+      "groupName": "github actions",
+      "matchManagers": ["github-actions"]
+    }
+  ]
+}

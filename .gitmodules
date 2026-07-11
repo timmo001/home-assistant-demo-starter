@@ -1,0 +1,4 @@
+[submodule "vendor/frontend"]
+	path = vendor/frontend
+	url = https://github.com/home-assistant/frontend.git
+	branch = dev
