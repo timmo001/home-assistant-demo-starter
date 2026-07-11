@@ -6,7 +6,7 @@
     "group:recommended"
   ],
   "dependencyDashboard": true,
-  "enabledManagers": ["git-submodules", "github-actions"],
+  "enabledManagers": ["dockerfile", "git-submodules", "github-actions"],
   "git-submodules": {
     "enabled": true
   },

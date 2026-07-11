@@ -1,0 +1,63 @@
+---
+name: Build image
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/build-image/Dockerfile
+      - .github/workflows/build-image.yml
+      - vendor/frontend
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: build-image
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out files
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+          submodules: true
+      - name: Read Playwright version
+        id: playwright
+        run: echo "version=$(node -p "require('./vendor/frontend/package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
+      - name: Read Node.js version
+        id: node
+        run: echo "version=$(<vendor/frontend/.nvmrc)" >> "$GITHUB_OUTPUT"
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0  # v4.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c  # v4.2.0
+      - name: Build and publish image
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a  # v7.3.0
+        with:
+          context: .github/build-image
+          push: true
+          pull: true
+          no-cache: ${{ github.event_name == 'schedule' }}
+          build-args: |
+            NODE_VERSION=${{ steps.node.outputs.version }}
+            PLAYWRIGHT_VERSION=${{ steps.playwright.outputs.version }}
+          tags: |
+            ghcr.io/timmo001/home-assistant-demo-starter-build:latest
+            ghcr.io/timmo001/home-assistant-demo-starter-build:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
