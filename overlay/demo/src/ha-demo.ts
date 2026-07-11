@@ -62,7 +62,10 @@ export class HaDemo extends HomeAssistantAppEl {
     const config = await selectedDemoConfig;
     const initial: Partial<MockHomeAssistant> = {
       panelUrl: (this as any)._panelUrl,
-      selectedTheme: config.theme,
+      selectedTheme:
+        typeof config.theme === "function"
+          ? { theme: "default" }
+          : config.theme,
       updateHass: (hassUpdate: Partial<HomeAssistant>) =>
         this._updateHass(hassUpdate),
     };
@@ -158,6 +161,9 @@ export class HaDemo extends HomeAssistantAppEl {
     hass.addEntities(energyEntities());
     localizePromise.then((localize) => {
       hass.addEntities(config.entities(localize));
+      if (typeof config.theme === "function") {
+        hass.mockTheme(config.theme());
+      }
     });
 
     document.body.addEventListener(

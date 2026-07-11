@@ -8,5 +8,5 @@ export const demoStarter: DemoConfig = {
   name: "Starter demo",
   lovelace: demoLovelaceStarter,
   entities: demoEntitiesStarter,
-  theme: () => ({}),
+  theme: { theme: "default" },
 };
