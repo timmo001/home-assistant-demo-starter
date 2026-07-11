@@ -14,7 +14,7 @@ ARG YAMLLINT_VERSION=1.38.0
 LABEL org.opencontainers.image.source="https://github.com/timmo001/home-assistant-demo-starter"
 
 RUN apt-get update \
-    && apt-get install --yes --no-install-recommends python3-pip \
+    && apt-get install --yes --no-install-recommends python3-pip xz-utils \
     && curl --silent --location \
       "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
       | tar --extract --xz --strip-components=1 --directory /usr/local \
