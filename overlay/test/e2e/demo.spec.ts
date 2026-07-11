@@ -27,7 +27,7 @@ test.describe("Home Assistant demo starter", () => {
     await expect(image).toBeVisible();
     await expect(image).toHaveAttribute(
       "src",
-      /\/assets\/sections\/images\/media_player_family_room\.jpg$/
+      /\/assets\/starter\/sample-album\.svg$/
     );
     await expect
       .poll(() => image.evaluate((element) => element.naturalWidth))

@@ -9,13 +9,13 @@ export const demoEntitiesStarter: DemoConfig["entities"] = (localize) => [
       volume_level: 0.35,
       is_volume_muted: false,
       media_content_type: "music",
-      media_title: "I Wasn't Born To Follow",
-      media_artist: "The Byrds",
-      media_album_name: "The Notorious Byrd Brothers",
+      media_title: "Sample Track",
+      media_artist: "Sample Artist",
+      media_album_name: "Sample Album",
       friendly_name: localize(
         "ui.panel.page-demo.config.sections.entities.media_player.living_room_nest_mini"
       ),
-      entity_picture: "/assets/sections/images/media_player_family_room.jpg",
+      entity_picture: "/assets/starter/sample-album.svg",
       supported_features: 64063,
     },
   },

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Abstract album artwork">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4b2e83"/>
+      <stop offset="1" stop-color="#1976a3"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f6c85f"/>
+      <stop offset="1" stop-color="#f28e8e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#background)"/>
+  <circle cx="390" cy="122" r="82" fill="#fff" opacity=".12"/>
+  <path d="M0 320c72-80 122-80 194 0s122 80 194 0 96-76 124-62v254H0z" fill="url(#wave)"/>
+  <path d="M0 382c72-64 122-64 194 0s122 64 194 0 96-61 124-50v180H0z" fill="#fff" opacity=".2"/>
+  <circle cx="256" cy="238" r="82" fill="#fff" opacity=".92"/>
+  <path d="M238 194v100l76-50z" fill="#4b2e83"/>
+</svg>
