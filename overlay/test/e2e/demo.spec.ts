@@ -21,7 +21,7 @@ test.describe("Home Assistant demo starter", () => {
     await expect(heading).toContainText("Living room");
 
     const tile = page.locator("hui-tile-card");
-    await expect(tile).toContainText("Nest mini");
+    await expect(tile).toContainText("Media player");
 
     const image = tile.locator("ha-tile-icon img");
     await expect(image).toBeVisible();

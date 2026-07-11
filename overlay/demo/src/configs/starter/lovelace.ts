@@ -20,7 +20,7 @@ export const demoLovelaceStarter: DemoConfig["lovelace"] = (localize) => ({
             },
             {
               type: "tile",
-              entity: "media_player.living_room_nest_mini",
+              entity: "media_player.living_room_speaker",
               show_entity_picture: true,
             },
           ],
